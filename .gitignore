@@ -1,0 +1,13 @@
+# Ignore environment variables and credentials
+.env
+*.toml
+__pycache__/
+*.pyc
+
+# Streamlit internal files
+.streamlit/
+
+# VSCode & system junk
+.vscode/
+.DS_Store
+Thumbs.db
