@@ -115,6 +115,61 @@ if not st.session_state.logged_in:
     text-shadow: 0 0 10px rgba(0,255,255,0.6);
 "> Hub Extractor Login</h2>
 """, unsafe_allow_html=True)
+# ✅ Only apply login CSS before user logs in
+if not st.session_state.logged_in:
+    st.markdown("""
+    <style>
+    section.main {
+        display: flex;
+        justify-content: center !important;
+        align-items: center !important;
+        height: 100vh;
+        padding: 0 !important;
+        margin: 0 auto !important;
+    }
+    .block-container {
+        padding-top: 0rem !important;
+        padding-bottom: 0rem !important;
+        margin: 0 auto !important;
+    }
+    div[data-testid="stForm"] {
+        background-color: #0b1221;
+        border-radius: 16px;
+        padding: 50px 60px;
+        box-shadow: 0 0 25px rgba(0,255,255,0.3);
+        border: 1px solid rgba(0,255,255,0.4);
+        width: 500px;
+        text-align: center;
+        margin: auto;
+    }
+    div[data-testid="stTextInput"] input,
+    div[data-testid="stPasswordInput"] input {
+        background-color: #141c2c !important;
+        color: white !important;
+        border-radius: 8px !important;
+        border: 1px solid rgba(0,255,255,0.4) !important;
+        text-align: center;
+    }
+    label {
+        color: #a9b3c1 !important;
+        font-size: 1.1rem !important;
+        margin-bottom: 0.4rem !important;
+    }
+    button[kind="primary"] {
+        background-color: cyan !important;
+        color: #0b1221 !important;
+        font-weight: bold !important;
+        border-radius: 8px !important;
+        width: 100%;
+        padding: 10px 0;
+        font-size: 1.1rem;
+    }
+    button[kind="primary"]:hover {
+        background-color: #00e6e6 !important;
+        box-shadow: 0 0 10px cyan;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
     with st.form("login_form"):
         username = st.text_input("Username")
