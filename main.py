@@ -126,7 +126,6 @@ if not st.session_state.logged_in:
             st.session_state.logged_in = True
             st.session_state.username = username
             st.success(f"✅ Welcome, {username}!")
-            st.experimental_rerun()
         else:
             st.error("Invalid username or password")
     st.stop()  # prevent showing main app when not logged in
