@@ -30,16 +30,6 @@ if "username" not in st.session_state:
 # --- LOGIN PAGE STYLE ---
 st.markdown("""
 <style>
-/* ✅ Force full-page flex centering */
-section.main {
-    display: flex;
-    justify-content: center !important;
-    align-items: flex-start !important;
-    min-height: 100vh;  /* use min-height instead of fixed height */
-    padding-top: 5vh !important; /* small top gap */
-}
-
-
 /* ✅ Remove Streamlit container padding */
 .block-container {
     padding-top: 0rem !important;
