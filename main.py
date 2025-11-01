@@ -125,8 +125,6 @@ if not st.session_state.logged_in:
         if username in USER_CREDENTIALS and USER_CREDENTIALS[username] == password:
             st.session_state.logged_in = True
             st.session_state.username = username
-            st.success(f"✅ Welcome, {username}!")
-            # don't call experimental_rerun() on Streamlit Cloud; app will rerun automatically
         else:
             st.error("Invalid username or password")
     st.stop()  # keep rest of app hidden until logged in
