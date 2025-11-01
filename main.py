@@ -113,8 +113,8 @@ if not st.session_state.logged_in:
         st.markdown('<div class="login-title"><strong>Hub Extractor</strong></div>', unsafe_allow_html=True)
 
         # inputs (centered by CSS already)
-        username = st.text_input("username", placeholder="Username", label_visibility="collapsed")
-        password = st.text_input("password", placeholder="Password", type="password", label_visibility="collapsed")
+        username = st.text_input("username", placeholder="Username")
+        password = st.text_input("password", placeholder="Password", type="password")
 
         # center the button using three columns and placing the button in the middle one
         col_l, col_c, col_r = st.columns([1, 2, 1])
@@ -336,7 +336,7 @@ else:
 st.markdown('<div style="text-align:center;font-size:1.4rem;"><b>Chat with Data</b></div>', unsafe_allow_html=True)
 
 with st.form(key="query_form"):
-    query = st.text_area("", placeholder="Type your question and clisk Ask or Ctrl+Enter...")
+    query = st.text_area("query", placeholder="Type your question and clisk Ask or Ctrl+Enter...", label_visibility="collapsed")
     ask = st.form_submit_button("Ask")
 
 if ask:
