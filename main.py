@@ -94,7 +94,9 @@ button[kind="primary"]:hover {
 
 
 # --- LOGIN FORM ---
+# --- LOGIN FORM (compact, heading inside card, centered button) ---
 if not st.session_state.logged_in:
+
     st.markdown("""
 <h2 style="
     text-align:center;
@@ -107,17 +109,27 @@ if not st.session_state.logged_in:
 """, unsafe_allow_html=True)
 
     with st.form("login_form"):
-        username = st.text_input("Username")
-        password = st.text_input("Password", type="password")
-        login_btn = st.form_submit_button("Login")
+        # heading inside the card
+        st.markdown('<div class="login-title"><strong>Hub Extractor</strong></div>', unsafe_allow_html=True)
+
+        # inputs (centered by CSS already)
+        username = st.text_input("", placeholder="Username")
+        password = st.text_input("", placeholder="Password", type="password")
+
+        # center the button using three columns and placing the button in the middle one
+        col_l, col_c, col_r = st.columns([1, 2, 1])
+        with col_c:
+            login_btn = st.form_submit_button("Login")
 
     if login_btn:
         if username in USER_CREDENTIALS and USER_CREDENTIALS[username] == password:
             st.session_state.logged_in = True
             st.session_state.username = username
+            st.success(f"✅ Welcome, {username}!")
+            # don't call experimental_rerun() on Streamlit Cloud; app will rerun automatically
         else:
             st.error("Invalid username or password")
-    st.stop()  # prevent showing main app when not logged in
+    st.stop()  # keep rest of app hidden until logged in
 
 # --- LOGOUT + MAIN APP ---
 st.sidebar.success(f"Logged in as {st.session_state.username}")
