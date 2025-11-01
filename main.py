@@ -9,7 +9,7 @@ st.set_page_config(
     page_title='Hub-Data-Extractor',
     page_icon='unimarks_logo.png',
     layout='wide',
-    initial_sidebar_state='expanded',
+    initial_sidebar_state='collapsed',
     menu_items={'Get help': 'mailto:dsa@unimarkslegal.com'}
 )
 
