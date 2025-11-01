@@ -34,11 +34,11 @@ st.markdown("""
 section.main {
     display: flex;
     justify-content: center !important;
-    align-items: center !important;
-    height: 100vh;
-    padding: 0 !important;        /* remove Streamlit padding */
-    margin: 0 auto !important;    /* ensure full center horizontally */
+    align-items: flex-start !important;
+    min-height: 100vh;  /* use min-height instead of fixed height */
+    padding-top: 5vh !important; /* small top gap */
 }
+
 
 /* ✅ Remove Streamlit container padding */
 .block-container {
@@ -135,7 +135,6 @@ st.sidebar.success(f"Logged in as {st.session_state.username}")
 if st.sidebar.button("Logout"):
     for key in list(st.session_state.keys()):
         del st.session_state[key]  # clears everything
-    st.experimental_rerun()
 
 # Your main app starts here ↓
 from dotenv import load_dotenv
