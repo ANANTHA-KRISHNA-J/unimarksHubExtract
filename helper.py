@@ -71,11 +71,11 @@ def fetch_deals(start_date: str, end_date: str, dealtypes:list[str] | None = Non
         dt_start = datetime.datetime.strptime(start_date, "%Y-%m-%d")
         dt_end = datetime.datetime.strptime(end_date, "%Y-%m-%d")
 
-        start_ms = int(dt_start.timestamp() * 1000)
-        end_ms = int(dt_end.timestamp() * 1000)
+        # start_ms = int(dt_start.timestamp() * 1000)
+        # end_ms = int(dt_end.timestamp() * 1000)
         # Convert to HubSpot ISO8601 format
-        #start_str = dt_start.strftime("%Y-%m-%dT%H:%M:%SZ")
-        #end_str = dt_end.strftime("%Y-%m-%dT%H:%M:%SZ")
+        start_str = dt_start.strftime("%Y-%m-%dT%H:%M:%SZ")
+        end_str = dt_end.strftime("%Y-%m-%dT%H:%M:%SZ")
 
         url = "https://api.hubapi.com/crm/v3/objects/deals/search"
         headers = {"Authorization": f"Bearer {hub_token}"}
@@ -89,8 +89,8 @@ def fetch_deals(start_date: str, end_date: str, dealtypes:list[str] | None = Non
                 ],
                 "filterGroups": [{
                     "filters": [
-                        {"propertyName": "closedate", "operator": "GTE", "value": start_ms},
-                        {"propertyName": "closedate", "operator": "LTE", "value": end_ms},
+                        {"propertyName": "closedate", "operator": "GTE", "value": start_str},
+                        {"propertyName": "closedate", "operator": "LTE", "value": end_str},
                         #{"propertyName": "dealstage", "operator": "IN", "values": closed_stages},
                     ]
                 }]
